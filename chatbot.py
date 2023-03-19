@@ -41,8 +41,13 @@ def check_all_messages(message):
     response('You\'re welcome!', ['thank', 'thanks'], single_response=True)
     response('Thank you!', ['i', 'love', 'code', 'palace'], required_words=['code', 'palace'])
 
+    #long Response# Longer responses
+    response(long.R_ADVICE, ['give', 'advice'], required_words=['advice'])
+    response(long.R_EATING, ['what', 'you', 'eat'], required_words=['you', 'eat'])
 
-
+    best_match = max(highest_prob_list,key=highest_prob_list.get)
+    #print(highest_prob_list)
+    return long.unknown() if highest_prob_list[best_match] < 1 else best_match
 
 # Used to get the response
 def get_response(user_input):
